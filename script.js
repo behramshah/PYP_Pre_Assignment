@@ -6,9 +6,16 @@ const rightBarItemButton = document.getElementById("rightBarItem");
 const toSubscribeLink = document.getElementById("toSubscribe");
 const myOverlay = document.getElementById("myOverlay");
 const subscribeButtonTwo = document.getElementById("subscribeButtonDown");
+const subscribeInput = document.getElementById("subscribe_input");
 
 function closeSubscribe () {
   subscribeModule.style.display = "none";
+} 
+
+function subscribe () {
+  subscribeInput.value.toLowerCase().match(
+    /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
+  ) ? subscribeModule.style.display = "none" : window.alert('use correct email adress');
 } 
 
 function toSubscribe () {
@@ -25,7 +32,7 @@ function w3_close() {
   document.getElementById("myOverlay").style.display = "none";
 }
 
-subscribeButton.addEventListener("click", closeSubscribe)
+subscribeButton.addEventListener("click", subscribe)
 closeSubscribeButton.addEventListener("click", closeSubscribe)
 closeSideBarButton.addEventListener("click", w3_close)
 myOverlay.addEventListener("click", w3_close)
